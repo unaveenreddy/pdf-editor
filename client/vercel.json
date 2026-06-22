@@ -2,8 +2,5 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "installCommand": "npm install",
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "https://pdf-editor-api.onrender.com/api/$1" }
-  ]
+  "installCommand": "npm install"
 }

@@ -1,5 +1,6 @@
 import { useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
+import { PDFDocument } from 'pdf-lib'
 import { useStore } from '../../store'
 
 export default function Uploader() {
@@ -11,16 +12,9 @@ export default function Uploader() {
     const url = URL.createObjectURL(file)
 
     try {
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        body: (() => {
-          const fd = new FormData()
-          fd.append('file', file)
-          return fd
-        })(),
-      })
-      const data = await res.json()
-      setFile(file, url, data.pageCount)
+      const buf = await file.arrayBuffer()
+      const pdf = await PDFDocument.load(buf)
+      setFile(file, url, pdf.getPageCount())
     } catch {
       setFile(file, url, 0)
     }
