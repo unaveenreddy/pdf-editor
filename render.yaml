@@ -1,11 +1,12 @@
 services:
   - type: web
-    name: pdf-editor
+    name: pdf-editor-api
     env: node
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    region: oregon
+    buildCommand: cd server && npm install
+    startCommand: cd server && npx tsx src/index.ts
     envVars:
       - key: NODE_VERSION
         value: 20
-      - key: NODE_ENV
-        value: production
+      - key: PORT
+        value: 10000
