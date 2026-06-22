@@ -1,5 +1,8 @@
-node_modules/
-dist/
-uploads/
+node_modules
+dist
 .env
-*.tsbuildinfo
+*.local
+uploads/*
+!uploads/.gitkeep
+.DS_Store
+*.log
